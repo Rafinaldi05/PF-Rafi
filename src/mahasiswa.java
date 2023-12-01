@@ -26,19 +26,18 @@ public class mahasiswa extends JFrame{
         this.pack();
 
         bproses.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(ActionEvent e) {
+                        public void bprosesActionPerformed(java.awt.event.ActionEvent evt) {
                 String nama = tfnama.getText();
-                int tlTanggal = Integer.parseInt((String) tgl.getSelectedItem());
-                int tlBulan = bln.getSelectedIndex() + 1;
-                int tlTahun = Integer.parseInt ((String) thn.getSelectedItem());
+                int tltgl = Integer.parseInt((String) tgl.getSelectedItem());
+                int tlbln = bln.getSelectedIndex() + 1;
+                int tlthn = Integer.parseInt ((String) thn.getSelectedItem());
                 String alamat = tfalamat.getText();
 
                 textAreaNama.setText("Nama          :" + " " + nama);
-                textAreaTL.setText("Tanggal Lahir           :" + " " + tlTanggal + " " + bln.getSelectedItem() + " " + tlTahun);
+                textAreaTL.setText("Tanggal Lahir           :" + " " + tltgl + " " + bln.getSelectedItem() + " " + tlthn);
                 textAreaAlamat.setText("Alamat          :" + " " + alamat);
 
-                LocalDate birthdate = LocalDate.of(tlTahun, tlBulan, tlTanggal);
+                LocalDate birthdate = LocalDate.of(tlthn, tlbln, tltgl);
                 LocalDate currentDate = LocalDate.now();
                 Period period = Period.between(birthdate, currentDate);
 
@@ -47,6 +46,11 @@ public class mahasiswa extends JFrame{
                 int days = period.getDays();
 
                 textAreaUsia.setText("Usia          :" + " " + years + " tahun, " + months + " bulan, " + days + " hari");
+            }
+
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
             }
         });
     }
